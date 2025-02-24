@@ -1,14 +1,10 @@
-import { useState } from 'react'
-import './App.css'
+import InteractiveView from './components/InteractiveView360';
+import "/src/assets/css/App.css";
 
 function App() {
 
   return (
-    <>
-      <div>
-     
-      </div>
-    </>
+    <InteractiveView />
   )
 }
 
