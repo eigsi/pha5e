@@ -1,26 +1,3 @@
-header{
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: calc(100vw - 4rem);
-    margin: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .header-left{
-        position: absolute;
-        left: 0;
-    }
-    .header-right{
-        position: absolute;
-        right: 0;
-    }
-}
-
-mesh {
-    margin: 0;
-    padding: 0;
-}
 Canvas {
     padding: 0;
     width: 100vw;
