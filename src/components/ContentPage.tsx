@@ -1,8 +1,11 @@
 import Header from './Header';
 import '/src/assets/css/ContentPage.scss';
-import { RxCross1 } from 'react-icons/rx'
+import { RxCross1 } from 'react-icons/rx';
+import { useNavigate } from 'react-router-dom';
 
 function ContentPage() {
+    const navigate = useNavigate();
+    
     return (
         <>
             {/* -------- HEADER -------- */}
@@ -15,7 +18,7 @@ function ContentPage() {
                 </section>
                 <section className='content'>
                     <img className='content-top' src="/images/menu1.png" alt="Lavande" />
-                    <RxCross1 className={`close-icon`}/>
+                    <RxCross1 className={`close-icon`} onClick={() => navigate('/')}/>
                     <div className='content-bot'>
                         <h1>La lavande</h1>
                         <div className='content-text'>

@@ -34,9 +34,9 @@ function InteractiveView360() {
           onDragStart={() => setIsDragging(true)}
           onDragEnd={() => setIsDragging(false)}
         />
+        {/* -------- WHITE CIRCLE -------- */}
         <ClickableCircle
           position={[0, 0, -20]}
-          onClick={() => console.log('Point clicked')}
           isDragging={isDragging}
         />
       </Canvas>
