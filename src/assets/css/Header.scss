@@ -1,22 +1,26 @@
 header{
     position: absolute;
-    top: 0;
+    top: .5rem;
     left: 0;
     width: calc(100vw - 6rem);
     margin: 2rem 3rem;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: flex-start;
     color: white;
     .header-left{
         position: absolute;
         font-weight: 500;
         left: 0;
+        margin: 0;
     }
     .header-right{
         position: absolute;
         right: 0;
         font-size: 2rem;
         stroke-width: .1rem;
+    }
+    .header-center {    
+        width: 9rem;
     }
 }

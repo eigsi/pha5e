@@ -16,6 +16,7 @@
             transform: translateX(-15rem) scale(2) scaleX(-1); 
             height: 50vw;    
             object-fit: contain; 
+
         }
     }
 }
@@ -54,9 +55,15 @@
         width: 100%;
         background-color: white;
         color: black;
+        overflow: hidden;
+        .titre {
+            white-space: nowrap;
+            display: flex;
+        }
+
         h1 {
-            margin: 3rem;
-            margin-bottom: 5rem;
+            margin: 2rem;
+            margin-bottom: 6rem;
             font-size: 5rem;
             font-weight: 600;
         }
