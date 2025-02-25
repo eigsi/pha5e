@@ -1,5 +1,50 @@
 Canvas {
-    padding: 0;
     width: 100vw;
     height: 100vh;
+}
+
+.overlay-circle-shape {
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 15%;
+    height: 10rem;
+}
+
+.overlay-circle {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 8rem;
+    aspect-ratio: 1 / 1;
+    background-color: #ffd364;
+    padding: 1rem;
+    border: .1rem solid #ffd364;
+    background-clip: content-box;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    h2 {
+        font-size: .9rem;
+        max-width: 4rem;
+        font-weight: 400;
+        transition: .2s ease-in-out;
+    }
+
+    &:hover {
+        padding: .4rem;
+        width: 8.4rem;
+        border: .3rem solid #ffd364;
+    }
+
+    &.dragging {
+        transition: .5s ease-in-out;
+        opacity: 0;
+        padding: 1.3rem;
+        width: 7.6rem;
+    }
 }

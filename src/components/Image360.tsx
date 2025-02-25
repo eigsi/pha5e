@@ -4,7 +4,7 @@ import { TextureLoader, BackSide } from 'three';
 import { OrbitControls } from '@react-three/drei';
 import ClickablePoint from './ClickableCircle';
 
-function Image360() {
+function Image360({ onDragStart, onDragEnd }: { onDragStart: () => void; onDragEnd: () => void })  {
   const texture = useLoader(TextureLoader, '/images/360view_1.jpg');
 
   const handlePointClick = () => {
@@ -16,8 +16,12 @@ function Image360() {
         <sphereGeometry args={[500, 60, 60]} />
         <meshBasicMaterial map={texture} side={BackSide} />
       </mesh>
-      <OrbitControls enableZoom={false} rotateSpeed={-0.5}/>
-      <ClickablePoint position={[0, 0, -10]} onClick={handlePointClick} />
+      <OrbitControls
+        enableZoom={false}
+        rotateSpeed={-0.5}
+        onStart={onDragStart}
+        onEnd={onDragEnd} />
+      <ClickablePoint position={[0, -10, -50]} onClick={handlePointClick} />
     </>
 
   )
