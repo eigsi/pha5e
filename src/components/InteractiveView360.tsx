@@ -5,6 +5,7 @@ import Header from './Header';
 import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import ClickableCircle from './ClickableCircle';
+import InteractiveViewIntro from './InteractiveViewIntro';
 import gsap from 'gsap';
 import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
@@ -12,6 +13,7 @@ import { useState, useRef } from 'react';
 function InteractiveView360() {
   const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState(false);
+  const [Intro, setIntro] = useState(true);
   const overlayRef = useRef(null);
 
   // PRELOAD THE TEXTURES TO AVOID WHITE SCREEN
@@ -68,11 +70,14 @@ function InteractiveView360() {
         </div>
       </div>
 
-      {/* -------- HEADER -------- */}
-      <Header />
-
       {/* ----------- OVERLAY ----------- */}
       <div className='overlay' ref={overlayRef}></div>
+
+      {/* ----------- INTRO ----------- */}
+      <InteractiveViewIntro />
+
+      {/* -------- HEADER -------- */}
+      <Header />
     </>
 
   )
