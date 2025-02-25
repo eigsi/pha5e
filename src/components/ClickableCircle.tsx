@@ -1,5 +1,4 @@
 import { Html } from '@react-three/drei';
-import { useNavigate } from 'react-router-dom';
 import '/src/assets/css/ClickableCircle.scss';
 
 interface ClickableCircleProps {
@@ -8,13 +7,12 @@ interface ClickableCircleProps {
   isDragging: boolean;
 }
 
-function ClickableCircle({ position, isDragging }: ClickableCircleProps) {
-    const navigate = useNavigate();
+function ClickableCircle({ position, isDragging, onClick }: ClickableCircleProps) {
 
     return (
         <Html position={position} center transform distanceFactor={10}>
           <div
-             onClick={() => navigate('/content')}
+             onClick={onClick}
             className={`clickable-circle ${isDragging ? "dragging" : ""}`}
           />
         </Html>

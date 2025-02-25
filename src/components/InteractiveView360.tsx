@@ -2,14 +2,17 @@ import '/src/assets/css/InteractiveView360.scss';
 import { Canvas } from '@react-three/fiber';
 import Image360 from './Image360';
 import Header from './Header';
-import { useState } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import ClickableCircle from './ClickableCircle';
+import gsap from 'gsap';
+import { useNavigate } from 'react-router-dom';
+import { useState, useRef } from 'react';
 
 function InteractiveView360() {
-
+  const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState(false);
+  const overlayRef = useRef(null);
 
   // PRELOAD THE TEXTURES TO AVOID WHITE SCREEN
   const textures = useLoader(TextureLoader, [
@@ -22,6 +25,19 @@ function InteractiveView360() {
   // CHANGE TEXTURE
   const handleTextureChange = () => {
     setTextureIndex(prevIndex => (prevIndex + 1) % textures.length);
+  };
+
+  const handleWhiteCircleClick = () => {
+    // Animation de l'overlay : opacité de 0 -> 1 sur 0.3 seconde
+    gsap.to(overlayRef.current, {
+      duration: 0.3,
+      opacity: 1,
+      ease: "power3.out",
+      onComplete: () => {
+        // Après l'animation, on navigue vers la nouvelle page
+        navigate('/content');
+      }
+    });
   };
 
   return (
@@ -38,6 +54,7 @@ function InteractiveView360() {
         <ClickableCircle
           position={[0, 0, -20]}
           isDragging={isDragging}
+          onClick={handleWhiteCircleClick}
         />
       </Canvas>
 
@@ -53,6 +70,9 @@ function InteractiveView360() {
 
       {/* -------- HEADER -------- */}
       <Header />
+
+      {/* ----------- OVERLAY ----------- */}
+      <div className='overlay' ref={overlayRef}></div>
     </>
 
   )

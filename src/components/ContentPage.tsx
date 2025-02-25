@@ -10,9 +10,10 @@ function ContentPage() {
     const navigate = useNavigate();
     const bgTopRef = useRef(null);
     const contentRef = useRef(null);
+    const overlayRef = useRef(null);
 
     useEffect(() => {
-        const tl = gsap.timeline();
+        const tl = gsap.timeline({ delay: 0.1 });
         tl.fromTo(
             bgTopRef.current,
             { y: -100 },
@@ -24,13 +25,22 @@ function ContentPage() {
             { duration: 1.5, y: 0, ease: "power3" },
             "<"
         );
+        tl.fromTo(
+            overlayRef.current,
+            { opacity: 1 },
+            { duration: 1.5, opacity: 0, ease: "power3" },
+            "<"
+        );
     }, []);
 
 
     return (
         <>
-            {/* -------- HEADER -------- */}
+            {/* ----------- OVERLAY ----------- */}
+            <div className='overlay' ref={overlayRef}></div>
+            {/* ----------- HEADER ----------- */}
             <Header />
+            {/* ----------- CONTENT ----------- */}
             <main>
                 <section className='background'>
                     <div ref={bgTopRef} className='bg-top'>

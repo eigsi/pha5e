@@ -1,3 +1,15 @@
+// ---------- OVERLAY -----------
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+}
 
 // ------- BACKGROUND IMG -------
 .background {
@@ -5,17 +17,19 @@
     background-color: white;
     z-index: -1;
     height: 85vw;
+
     .bg-top {
         background-color: black;
-        height: 50vw;
+        height: 55vw;
         overflow: hidden;
+
         .bg-top-img {
             width: 100vw;
             filter: brightness(.7) contrast(0.8) saturate(1.3);
             opacity: .5;
-            transform: translateX(-15rem) scale(2) scaleX(-1); 
-            height: 50vw;    
-            object-fit: contain; 
+            transform: translateX(-15rem) scale(2) scaleX(-1);
+            height: 50vw;
+            object-fit: contain;
 
         }
     }
@@ -33,6 +47,7 @@
     width: 80vw;
     height: 70vw;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
     // ---------- TOP -----------
     img {
         width: 100%;
@@ -40,7 +55,8 @@
         object-fit: cover;
         filter: brightness(1.2) contrast(0.8) saturate(1.3);
     }
-    .close-icon{
+
+    .close-icon {
         cursor: pointer;
         color: black;
         position: absolute;
@@ -55,7 +71,7 @@
         width: 100%;
         background-color: white;
         color: black;
-        overflow: hidden;
+
         .titre {
             white-space: nowrap;
             display: flex;
@@ -63,23 +79,27 @@
 
         h1 {
             margin: 2rem;
-            margin-bottom: 6rem;
+            margin-bottom: 5rem;
             font-size: 5rem;
             font-weight: 600;
         }
-        .content-text{
+
+        .content-text {
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            opacity: 1;
+
             img {
                 position: absolute;
                 width: 16vw;
                 height: auto;
                 object-fit: contain;
-                left:20%;
+                left: 20%;
                 top: 72%;
                 filter: saturate(1);
             }
+
             h2 {
                 margin: 0;
                 position: relative;
@@ -88,6 +108,7 @@
                 text-align: justify;
                 width: 28%;
             }
+
             h3 {
                 margin: 0;
                 font-size: 1.3rem;
