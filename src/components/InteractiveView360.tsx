@@ -7,7 +7,6 @@ function InteractiveView360() {
   return (
     <>
      <Canvas className="Canvas360">
-      <ambientLight intensity={3} />
       <ImagePlane />
     </Canvas>
     <Header />
