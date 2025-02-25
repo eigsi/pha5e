@@ -1,0 +1,94 @@
+
+// ------- BACKGROUND IMG -------
+.background {
+    position: relative;
+    background-color: white;
+    z-index: -1;
+    height: 85vw;
+    .bg-top {
+        background-color: black;
+        height: 50vw;
+        overflow: hidden;
+        .bg-top-img {
+            width: 100vw;
+            filter: brightness(.7) contrast(0.8) saturate(1.3);
+            opacity: .5;
+            transform: translateX(-15rem) scale(2) scaleX(-1); 
+            height: 50vw;    
+            object-fit: contain; 
+        }
+    }
+}
+
+// ---------- CONTENT -----------
+
+.content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    left: 10vw;
+    top: 7.5vw;
+    width: 80vw;
+    height: 70vw;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    // ---------- TOP -----------
+    img {
+        width: 100%;
+        height: 33vw;
+        object-fit: cover;
+        filter: brightness(1.2) contrast(0.8) saturate(1.3);
+    }
+    .close-icon{
+        color: black;
+        opacity: .8;
+        position: absolute;
+        width: 2.5rem;
+        height: 2.5rem;
+        right: 0;
+        padding: 1rem;
+    }
+
+    // ---------- BOTTOM -----------
+    .content-bot {
+        width: 100%;
+        background-color: white;
+        color: black;
+        h1 {
+            margin: 3rem;
+            margin-bottom: 5rem;
+            font-size: 5rem;
+            font-weight: 600;
+        }
+        .content-text{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            img {
+                position: absolute;
+                width: 16vw;
+                height: auto;
+                object-fit: contain;
+                left:20%;
+                top: 72%;
+                filter: saturate(1);
+            }
+            h2 {
+                margin: 0;
+                position: relative;
+                z-index: 3;
+                font-size: 2.6rem;
+                text-align: justify;
+                width: 28%;
+            }
+            h3 {
+                margin: 0;
+                font-size: 1.3rem;
+                margin-left: 10%;
+                width: 40%;
+                text-align: justify;
+                font-weight: 300;
+            }
+        }
+    }
+}
