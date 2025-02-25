@@ -5,11 +5,13 @@ import Header from './Header';
 import { useState } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
+import ClickableCircle from './ClickableCircle';
 
 function InteractiveView360() {
 
   const [isDragging, setIsDragging] = useState(false);
 
+  // PRELOAD THE TEXTURES TO AVOID WHITE SCREEN
   const textures = useLoader(TextureLoader, [
     '/images/360view_1.jpg',
     '/images/360view_2.jpg',
@@ -31,6 +33,11 @@ function InteractiveView360() {
           textures={textures}
           onDragStart={() => setIsDragging(true)}
           onDragEnd={() => setIsDragging(false)}
+        />
+        <ClickableCircle
+          position={[0, 0, -20]}
+          onClick={() => console.log('Point clicked')}
+          isDragging={isDragging}
         />
       </Canvas>
 

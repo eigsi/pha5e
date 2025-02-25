@@ -4,14 +4,15 @@ import '/src/assets/css/ClickableCircle.scss';
 interface ClickableCircleProps {
   position: [number, number, number];
   onClick: () => void;
+  isDragging: boolean;
 }
 
-function ClickableCircle({ position, onClick }: ClickableCircleProps) {
+function ClickableCircle({ position, onClick, isDragging }: ClickableCircleProps) {
     return (
-        <Html position={position} center>
+        <Html position={position} center transform distanceFactor={10}>
           <div
             onClick={onClick}
-            className='clickable-circle'
+            className={`clickable-circle ${isDragging ? "dragging" : ""}`}
           />
         </Html>
       );

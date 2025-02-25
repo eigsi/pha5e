@@ -1,10 +1,22 @@
-clickable-circle {
+.clickable-circle {
+    position: absolute;
     display: flex;
     cursor: pointer;
     border-radius: 50%;
-    width: 4rem;
-    height: 4rem;
-    background-color: #646cff;
-    border: .1rem solid red;
-    z-index: 1;
+    width: 6rem;
+    aspect-ratio: 1 / 1;
+    background-clip: content-box;
+    background-color: white;
+    padding: .7rem;
+    border: .2rem solid white;
+    transition: .3s ease;
+    &:hover{
+        padding: 1rem;
+        border: .1rem solid white;
+    }
+    &.dragging {
+        opacity: .8;
+        padding: .3rem;
+        width: 5rem;
+    }
 }

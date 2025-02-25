@@ -1,12 +1,18 @@
 import '/src/assets/css/Image360.scss';
 import { BackSide } from 'three';
 import { OrbitControls } from '@react-three/drei';
-import ClickablePoint from './ClickableCircle';
 import { a, useSpring } from '@react-spring/three';
 import { useEffect, useState } from 'react';
 import { easeCubicInOut } from 'd3-ease';
 
-function Image360({ textureIndex, textures, onDragStart, onDragEnd }: { textureIndex: number; textures: any[]; onDragStart: () => void; onDragEnd: () => void }) {
+interface Image360Props {
+  textureIndex: number;
+  textures: any[];
+  onDragStart: () => void;
+  onDragEnd: () => void;
+}
+
+function Image360({ textureIndex, textures, onDragStart, onDragEnd }: Image360Props) {
 
   const [currentTextureIndex, setCurrentTextureIndex] = useState(textureIndex);
   const baseTexture = textures[textureIndex];  // BASE TEXTURE
@@ -26,7 +32,7 @@ function Image360({ textureIndex, textures, onDragStart, onDragEnd }: { textureI
     opacity: 0,
     config: { duration: 750, easing: easeCubicInOut },
   }));
-  
+
 
   useEffect(() => {
     if (textureIndex !== currentTextureIndex) {
@@ -35,8 +41,8 @@ function Image360({ textureIndex, textures, onDragStart, onDragEnd }: { textureI
       // 2 ) START ROTATION +90° 
       rotationApi.start({
         rotationY: accumulatedRotation + Math.PI / 2,
-        config: { duration: 750, easing: easeCubicInOut},
-        onRest: () => { 
+        config: { duration: 750, easing: easeCubicInOut },
+        onRest: () => {
           setTimeout(() => {  // DELAY TO CHANGE TEXTURE
             // UPDATE TEXTURE
             setCurrentTextureIndex(textureIndex);
@@ -46,18 +52,13 @@ function Image360({ textureIndex, textures, onDragStart, onDragEnd }: { textureI
             const newAccumulated = accumulatedRotation + Math.PI / 2;
             setAccumulatedRotation(newAccumulated);
             rotationApi.set({ rotationY: newAccumulated });
-          }); 
+          });
         },
       });
     }
   }, [textureIndex, currentTextureIndex, accumulatedRotation, opacityApi, rotationApi]);
 
 
-
-
-  const handlePointClick = () => {
-    console.log('Point clicked');
-  };
   return (
     <>
       <a.group rotation-y={rotationSpring.rotationY}>
@@ -84,8 +85,9 @@ function Image360({ textureIndex, textures, onDragStart, onDragEnd }: { textureI
         onStart={onDragStart}
         onEnd={onDragEnd}
       />
-      <ClickablePoint position={[0, -10, -50]} onClick={handlePointClick} />
+     
     </>
+
 
   )
 }

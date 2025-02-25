@@ -18,9 +18,9 @@ Canvas {
     border-radius: 50%;
     width: 8rem;
     aspect-ratio: 1 / 1;
-    background-color: #ffd364;
+    background-color: #ffd260;
     padding: 1rem;
-    border: .1rem solid #ffd364;
+    border: .15rem solid #ffd260;
     background-clip: content-box;
     z-index: 1;
     display: flex;
@@ -36,15 +36,15 @@ Canvas {
     }
 
     &:hover {
-        padding: .4rem;
+        padding: 1.2rem;
         width: 8.4rem;
-        border: .3rem solid #ffd364;
+        border: .2rem solid #ffd260;
     }
 
     &.dragging {
         transition: .5s ease-in-out;
         opacity: 0;
-        padding: 1.3rem;
-        width: 7.6rem;
+        padding: .7rem;
+        width: 7rem;
     }
 }
