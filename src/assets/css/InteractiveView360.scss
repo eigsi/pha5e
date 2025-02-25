@@ -14,7 +14,7 @@ Canvas {
 }
 
 .overlay-circle {
-    opacity: 0;
+    opacity: 1;
     cursor: pointer;
     border-radius: 50%;
     width: 8rem;
@@ -24,7 +24,7 @@ Canvas {
     border: .15rem solid #ffd260;
     background-clip: content-box;
     z-index: 1;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
@@ -34,6 +34,7 @@ Canvas {
         max-width: 4rem;
         font-weight: 400;
         transition: .2s ease-in-out;
+        color: black;
     }
 
     &:hover {

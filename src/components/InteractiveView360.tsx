@@ -8,13 +8,17 @@ import ClickableCircle from './ClickableCircle';
 import InteractiveViewIntro from './InteractiveViewIntro';
 import gsap from 'gsap';
 import { useNavigate } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function InteractiveView360() {
   const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState(false);
-  const [Intro, setIntro] = useState(true);
-  const overlayRef = useRef(null);
+  const [intro, setIntro] = useState(true);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const circleYellowRef = useRef<HTMLDivElement>(null);
+  const circleWhiteRef = useRef<HTMLDivElement>(null);
+  const overlayIntroRef = useRef<HTMLDivElement>(null);
+  const introContentRef = useRef<HTMLDivElement>(null);
 
   // PRELOAD THE TEXTURES TO AVOID WHITE SCREEN
   const textures = useLoader(TextureLoader, [
@@ -42,6 +46,51 @@ function InteractiveView360() {
     });
   };
 
+  // Callback passée à InteractiveViewIntro pour lancer la transition
+  const handleStartIntro = () => {
+    setIntro(false);
+  };
+
+  // Dès que intro passe à false, on lance la timeline GSAP de transition
+  useEffect(() => {
+    if (!intro) {
+      const tl = gsap.timeline();
+      // 1) DELETE INTRO OVERLAY
+      tl.to(overlayIntroRef.current, {
+        duration: 0.5,
+        opacity: 0,
+        ease: "power3.out",
+      });
+      // 2) DELETE INTRO CONTENT
+      tl.to(introContentRef.current, {
+        duration: 0.5,
+        y: 200,
+        opacity: 0,
+        ease: "power3.out",
+        onComplete: () => {
+          if (overlayIntroRef.current) {
+            overlayIntroRef.current.style.display = "none";
+          }
+          if (introContentRef.current) {
+            introContentRef.current.style.display = "none";
+          }
+          if (circleYellowRef.current) {
+            circleYellowRef.current.style.display = "flex";
+          }
+        }
+      },
+        "<"
+      );
+       // 3) CIRCLES ANIMATION
+      tl.to(circleWhiteRef.current, {
+        duration: 0.5,
+        opacity: 1,
+        ease: "power3.out",
+      },  "<"
+      );
+    }
+  }, [intro]);
+
   return (
     <>
       {/* -------- 360 PLANE -------- */}
@@ -54,6 +103,7 @@ function InteractiveView360() {
         />
         {/* -------- WHITE CIRCLE -------- */}
         <ClickableCircle
+          circleWhiteRef={circleWhiteRef}
           position={[0, 0, -20]}
           isDragging={isDragging}
           onClick={handleWhiteCircleClick}
@@ -64,6 +114,7 @@ function InteractiveView360() {
       <div className='overlay-circle-shape'>
         <div
           className={`overlay-circle ${isDragging ? "dragging" : ""}`}
+          ref={circleYellowRef}
           onClick={handleTextureChange}
         >
           <h2>CHANGE DE VUE</h2>
@@ -74,7 +125,11 @@ function InteractiveView360() {
       <div className='overlay' ref={overlayRef}></div>
 
       {/* ----------- INTRO ----------- */}
-      <InteractiveViewIntro />
+      <InteractiveViewIntro
+        onStart={handleStartIntro}
+        overlayIntroRef={overlayIntroRef}
+        introContentRef={introContentRef}
+      />
 
       {/* -------- HEADER -------- */}
       <Header />
