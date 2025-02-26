@@ -8,7 +8,7 @@ J'ai eu le temps de remplir entièrement le cahier des charges concernant l'intr
  
 Voici les libertés prises pour l'introduction du site : 
 ### Background
-J'ai changé l'image de fond, car celle choisie sur la maquette était d'une qualité insuffisante pour une image pleine écran, de même pour la version originale provenant du site de L'Occitane.  
+J'ai changé l'image de fond, car celle choisie sur la maquette était d'une qualité insuffisante pour une image plein écran, de même pour la version originale provenant du site de L'Occitane.  
 J'ai donc choisi une autre image provenant du site officiel, que j'ai éditée sur Photoshop afin de retirer le texte de l'image, ajouté un teint plus jaune et du grain pour me rapprocher de l'ambiance imaginée par le designer.
 
 ### Transitions
@@ -24,9 +24,9 @@ J'ai créé une transition fluide faisant disparaître l'introduction et appara�
 > Avec plus de temps, j'aurais amélioré le drag en ajoutant de l'inertie, ou au contraire en forçant les slides à se centrer de sorte à unifier le mouvement.
 
 ### Tutoriel
-J'ai préféré écrire l'explication du `drag` en français, car le site est entièrement rédigé en français et destiné à un publique qui n'est pas nécessairement bilingue. De plus, des personnes âgées ou non formées au langage informatique pourraient ne pas comprendre aisément la notion de *Drag*.  
+J'ai préféré écrire l'explication du `drag` en français, car le site est entièrement rédigé en français et destiné à un public qui n'est pas nécessairement bilingue. De plus, des personnes âgées ou non formées au langage informatique pourraient ne pas comprendre aisément la notion de *Drag*.  
 J'ai également ajouté une animation aux formes rondes pour renforcer la notion de mouvement.  
-> Dans un véritable projet j'aurais dessiner puis mis en place une animation plus explicite du mouvement à la places des formes rondes pour que ce soit plus intuitif.
+> Dans un véritable projet j'aurais dessiné puis mis en place une animation plus explicite du mouvement à la places des formes rondes pour que ce soit plus intuitif.
 
 ## 3 - VUE INTÉRACTIVE
 J'ai eu le temps de remplir entièrement le cahier des charges concernant la vue intéractive. 
