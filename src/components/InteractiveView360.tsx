@@ -1,8 +1,7 @@
 import '/src/assets/css/InteractiveView360.scss';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useLoader} from '@react-three/fiber';
 import Image360 from './Image360';
 import Header from './Header';
-import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import ClickableCircle from './ClickableCircle';
 import InteractiveViewIntro from './InteractiveViewIntro';
