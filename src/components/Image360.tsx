@@ -1,4 +1,3 @@
-import '/src/assets/css/Image360.scss';
 import { BackSide } from 'three';
 import { OrbitControls } from '@react-three/drei';
 import { a, useSpring } from '@react-spring/three';
