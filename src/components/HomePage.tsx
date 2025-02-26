@@ -37,6 +37,8 @@ function HomePage() {
 
   // -------------------------- 1° ANIMATION -> INTRO ------------------------
   useEffect(() => {
+    // REMOVE SCROLL ON HOMEPAGE
+    document.body.style.overflow = "hidden";
     const tl = gsap.timeline();
     // 1) BACKGROUND
     tl.fromTo(
@@ -79,6 +81,10 @@ function HomePage() {
       { duration: 1, opacity: 1, y: 0, ease: "power3" },
       ">-0.5"
     );
+    return () => {
+      // STOP REMOVE SCROLL
+      document.body.style.overflow = "";
+    };
   }, []);
 
   // -------------------------- 2° ANIMATION -> MENU ------------------------
@@ -107,7 +113,7 @@ function HomePage() {
 
   return (
     <>
-      <main>
+      <main className='homepage'>
         {/* -------------- BACKGROUND IMAGE -------------- */}
 
         <div className='home-bg' ref={backgroundRef}></div>
