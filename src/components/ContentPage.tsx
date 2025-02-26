@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Marquee from "react-fast-marquee";
+import { preloadImage } from '../assets/utils/preloadImages.js';
 
 function ContentPage() {
     const navigate = useNavigate();
@@ -12,32 +13,50 @@ function ContentPage() {
     const contentRef = useRef(null);
     const overlayRef = useRef(null);
 
+
+    // --------------- ANIMATION ---------------
+    // --------------- ANIMATION ---------------
+
     useEffect(() => {
-        const tl = gsap.timeline({ delay: 0.1 });
-        tl.fromTo(
-            bgTopRef.current,
-            { y: -100 },
-            { duration: 1.5, y: 0, ease: "power3" }
-        );
-        tl.fromTo(
-            contentRef.current,
-            { y: 100 },
-            { duration: 1.5, y: 0, ease: "power3" },
-            "<"
-        );
-        tl.fromTo(
-            overlayRef.current,
-            { opacity: 1 },
-            { duration: 1.5, opacity: 0, ease: "power3" },
-            "<"
-        );
+        const imageUrls = [
+            '/images/menu_bg1.jpeg',
+            '/images/menu1.png',
+            '/images/yellow_circle.png'
+        ];
+        Promise.all(imageUrls.map(preloadImage)).then(() => {
+            const tl = gsap.timeline({ delay: 0.1 });
+            // 1) BACKGROUND SLIDE BOT
+            tl.fromTo(
+                bgTopRef.current,
+                { y: -100 },
+                { duration: 1.5, y: 0, ease: "power3" }
+            );
+            // 2) CONTENT SLIDE TOP
+            tl.fromTo(
+                contentRef.current,
+                { y: 100 },
+                { duration: 1.5, y: 0, ease: "power3" },
+                "<"
+            );
+            // 3) OVERLAY DISAPPEAR
+            tl.fromTo(
+                overlayRef.current,
+                { opacity: 1 },
+                { duration: 1.5, opacity: 0, ease: "power3" },
+                "<"
+            );
+        })
+            .catch((error) => console.error("Erreur lors du préchargement des images", error));
     }, []);
 
+
+    // --------------- CONTENT ---------------
+    // --------------- CONTENT ---------------
 
     return (
         <>
             {/* ----------- OVERLAY ----------- */}
-            <div className='overlay' ref={overlayRef}></div>
+            <div className='overlay-content' ref={overlayRef}></div>
             {/* ----------- HEADER ----------- */}
             <Header />
             {/* ----------- CONTENT ----------- */}

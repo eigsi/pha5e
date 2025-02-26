@@ -8,6 +8,7 @@ interface ClickableCircleProps {
   circleWhiteRef: React.RefObject<HTMLDivElement | null>;
 }
 
+// ------ WHITE CIRCLE THAT REDIRECT TO CONTENT -------
 function ClickableCircle({ position, isDragging, onClick, circleWhiteRef }: ClickableCircleProps) {
 
     return (
