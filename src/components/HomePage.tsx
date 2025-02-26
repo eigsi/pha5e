@@ -1,5 +1,6 @@
 import '/src/assets/css/HomePage.scss';
 import Header from './Header';
+import MenuPage from './MenuPage';
 import gsap from 'gsap';
 import { useState, useRef, useEffect } from 'react';
 import { LiaAngleRightSolid } from "react-icons/lia";
@@ -87,24 +88,31 @@ function HomePage() {
     }
   }, [isMenuOpen]);
 
+  // -------------------- CONTENT --------------------
+  // -------------------- CONTENT --------------------
+  // -------------------- CONTENT --------------------
+
   return (
     <>
-      {/* -------- CONTENT -------- */}
       <main>
+        {/* -------------- BACKGROUND IMAGE -------------- */}
+
         <div className='home-bg' ref={backgroundRef}></div>
+
+        {/* -------------- 1ST PART -------------- */}
         <section className='first-part' ref={firstPartRef}>
           <h1 className='title' ref={titleRef}>L'Occitane<br /> vous invite à Manosque</h1>
           <img ref={circleRef} className='yellow-img' src="/images/yellow_circle.png" alt="yellow_circle" />
         </section>
 
+        {/* -------------- 2ND PART -------------- */}
         <section className='second-part' ref={secondPartRef}>
           <h2 className='title'>Entrez au cœur de notre univers en visitant à 360° le jardin, l’usine et la boutique musée.</h2>
           <button className='start-btn' onClick={handleStartMenu}>ENTRER DANS L'EXPERIENCE <LiaAngleRightSolid /></button>
         </section>
 
-        <section className='menu' ref={menuRef}>
-
-        </section>
+        {/* -------------- MENU PART -------------- */}
+        <MenuPage menuRef={menuRef} />
       </main>
       {/* -------- HEADER -------- */}
       <Header />
