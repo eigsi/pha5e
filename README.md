@@ -32,6 +32,9 @@ J'ai également ajouté une animation aux formes rondes pour renforcer la notion
 J'ai eu le temps de remplir entièrement le cahier des charges concernant la vue intéractive. 
 
 Voici les libertés prises sur le menu : 
+### Animation lors du tutoriel
+J'ai ajouté une transition simple lors du clic sur sur le bouton permettant de fermer le tutoriel. Cela rend l'experience bien plus naturelle.
+
 ### Animation des boutons jaune et blanc
 Étant donné qu'aucune consigne n'était spéficifée sur l'animation des cercles, j'ai moi même imaginé une animation lors du `hover`, du `active` et lors du mouvement de drag.
 > Avec plus de temps, j'aurais aimé créer un léger aperçu de la page contenu lorse que l'on passe sur le cercle blanc. Le cercle se déformerait et s'agrandirait légèrement pour laisser entrevoir le contenu à l'intérieur. Ça serait plus agréable et immersif pour l'utilisateur.
