@@ -16,7 +16,7 @@ J'ai ajouté du `blur` lors des transitions pour les fluidifier.
 > Si c'était un véritable projet, j'aurais également animé le cercle jaune de sorte à ce qu'il se "dessine" sur la page.
 
 ## 2 - MENU
-Le menu est la derniere partie dont je me suis occupé, je n'ai malheureusement pas eu le temps de remplir toutes les consignes présentes sur la maquette. Il manque le défilement des titres, ainsi que la transition avec zoom sur les images. 
+Le menu est la dernière partie dont je me suis occupé, je n'ai malheureusement pas eu le temps de remplir toutes les consignes présentes sur la maquette. Il manque le défilement des titres, ainsi que la transition avec zoom sur les images. 
 
 Voici les libertés prises sur le menu : 
 ### Transitions 
@@ -31,13 +31,13 @@ J'ai également ajouté une animation aux formes rondes pour renforcer la notion
 ## 3 - VUE INTÉRACTIVE
 J'ai eu le temps de remplir entièrement le cahier des charges concernant la vue intéractive. 
 
-Voici les libertés prises sur le menu : 
+Voici les libertés prises sur la vue 360 : 
 ### Animation lors du tutoriel
-J'ai ajouté une transition simple lors du clic sur sur le bouton permettant de fermer le tutoriel. Cela rend l'experience bien plus naturelle.
+J'ai ajouté une transition simple lors du clic sur sur le bouton permettant de fermer le tutoriel. Cela rend l'expérience bien plus naturelle.
 
 ### Animation des boutons jaune et blanc
 Étant donné qu'aucune consigne n'était spéficifée sur l'animation des cercles, j'ai moi même imaginé une animation lors du `hover`, du `active` et lors du mouvement de drag.
-> Avec plus de temps, j'aurais aimé créer un léger aperçu de la page contenu lorse que l'on passe sur le cercle blanc. Le cercle se déformerait et s'agrandirait légèrement pour laisser entrevoir le contenu à l'intérieur. Ça serait plus agréable et immersif pour l'utilisateur.
+> Avec plus de temps, j'aurais aimé créer un léger aperçu de la page contenu lorsque l'on passe sur le cercle blanc. Le cercle se déformerait et s'agrandirait légèrement pour laisser entrevoir le contenu à l'intérieur. Ça serait plus agréable et immersif pour l'utilisateur.
 
 ### Animation du changement de vue
 J'ai implémenté une animation lors du clic sur le cercle jaune, faisant tourner la scène horizontalement de 90 degrés pendant que la scène change à l'aide d'une transition par opacité. Pour passer fluidement d'une scène à l'autre, j'ai dû créer une 2ème sphère de sorte à pouvoir afficher 2 materiaux simultanément.
