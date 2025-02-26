@@ -1,6 +1,9 @@
-Canvas {
+.Canvas360 {
     width: 100vw;
     height: 100vh;
+    &.grabbing {
+        cursor: grabbing; 
+      }
 }
 
 .overlay-circle-shape {

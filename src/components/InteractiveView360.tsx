@@ -7,11 +7,17 @@ import { TextureLoader } from 'three';
 import ClickableCircle from './ClickableCircle';
 import InteractiveViewIntro from './InteractiveViewIntro';
 import gsap from 'gsap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 
 function InteractiveView360() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // TAKE THE TEXTURE PASSED BY THE MENU
+  const initialTextureIndex = location.state?.textureIndex || 0;
+  const [textureIndex, setTextureIndex] = useState(initialTextureIndex);
+
   const [isDragging, setIsDragging] = useState(false);
   const [intro, setIntro] = useState(true);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -27,10 +33,9 @@ function InteractiveView360() {
     '/images/360view_3.jpg'
   ]);
 
-  const [textureIndex, setTextureIndex] = useState(0);
   // CHANGE TEXTURE
   const handleTextureChange = () => {
-    setTextureIndex(prevIndex => (prevIndex + 1) % textures.length);
+    setTextureIndex((prevIndex: number) => (prevIndex + 1) % textures.length);
   };
 
   const handleWhiteCircleClick = () => {
@@ -121,7 +126,7 @@ function InteractiveView360() {
   return (
     <>
       {/* -------- 360 PLANE -------- */}
-      <Canvas className="Canvas360">
+      <Canvas className={`Canvas360 ${isDragging ? "grabbing" : ""}`} >
         <Image360
           textureIndex={textureIndex}
           textures={textures}

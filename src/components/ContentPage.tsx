@@ -49,7 +49,7 @@ function ContentPage() {
                 </section>
                 <section ref={contentRef} className='content' >
                     <img className='content-top' src="/images/menu1.png" alt="Lavande" />
-                    <RxCross1 className={`close-icon`} onClick={() => navigate('/')} />
+                    <RxCross1 className={`close-icon`} onClick={() => navigate('/interactive-view')} />
                     <div className='content-bot'>
                         <Marquee className='titre' gradient={false} speed={100}>
                             <h1>La lavande&nbsp;&nbsp;&nbsp;</h1>
