@@ -10,14 +10,19 @@ function HomePage() {
   const backgroundRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef(null);
   const circleRef = useRef(null);
-  const firstPartRef = useRef(null);
+  const firstPartRef = useRef<HTMLElement>(null);
   const secondPartRef = useRef(null);
-  const menuRef = useRef(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
 
   // EFFECT OF THE BUTTON -> OPEN THE MENU
   const handleStartMenu = () => {
     setIsMenuOpen(true);
+    // MENU DISPLAY
+    if (menuRef.current) {
+      menuRef.current.style.display = "block";
+    }
+    // ANIMATION OF THE BACKGROUND
     gsap.to(backgroundRef.current, {
       duration: 1,
       backgroundPosition: "0 -4.3rem",
@@ -45,7 +50,6 @@ function HomePage() {
       { opacity: 0 },
       { duration: 1, opacity: 1, ease: "power3" }
     );
-    ">0"
     // 3) YELLOW CIRCLE
     tl.fromTo(
       circleRef.current,
@@ -56,9 +60,18 @@ function HomePage() {
     tl.fromTo(
       firstPartRef.current,
       { opacity: 1, y: 0, filter: "blur(0px)" },
-      { duration: 1, opacity: 0, y: -175, filter: "blur(8px)", ease: "power2" },
-      ">1.5"
-    );
+      {
+        duration: 1,
+        opacity: 0,
+        y: -175,
+        filter: "blur(8px)",
+        ease: "power2",
+        onComplete: () => {
+          if (firstPartRef.current) {
+            firstPartRef.current.style.display = "none";
+          }
+        },
+      }, ">1.5");
     // 5) SECOND PART APPEAR
     tl.fromTo(
       secondPartRef.current,
@@ -80,9 +93,9 @@ function HomePage() {
       );
       // 2) MENU CONTENT APPEAR
       tl.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 300 },
-        { duration: 1, opacity: 1, y: 0, ease: "power3" }
+        menuRef.current,
+        { opacity: 0, top: "15rem" },
+        { duration: 2, opacity: 1, top: "0rem", ease: "power3" }
       );
       ">0"
     }

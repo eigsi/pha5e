@@ -10,6 +10,9 @@
     background-repeat: no-repeat;
     background-position: 0 0rem;
     transition: all .3 ease;
+    pointer-events: none; 
+    user-select: none;    
+    
 }
 
 h1 {
