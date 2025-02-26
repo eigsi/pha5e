@@ -15,6 +15,12 @@ function InteractiveViewIntro({ onStart, overlayIntroRef, introContentRef  }: In
 
              {/* ----------- CONTENT ----------- */}
             <section className='intro-content' ref={introContentRef}>
+                <div className='forms'>
+                    <div className='form form1'></div>
+                    <div className='form form2'></div>
+                    <div className='form form3'></div>
+                    <div className='form form4'></div>
+                </div>
                 <h1 className='intro-title'>Glissez avec la souris pour naviguer en 360°</h1>
                 <button className='start-btn' onClick={onStart}>COMPRIS! <LiaAngleRightSolid /></button>
             </section>

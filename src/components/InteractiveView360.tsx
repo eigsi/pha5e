@@ -34,24 +34,26 @@ function InteractiveView360() {
   };
 
   const handleWhiteCircleClick = () => {
-    // Animation de l'overlay : opacité de 0 -> 1 sur 0.3 seconde
+    // OVERLAY ANIMAMATION : OPACITY 0 -> 1
     gsap.to(overlayRef.current, {
       duration: 0.3,
       opacity: 1,
       ease: "power3.out",
       onComplete: () => {
-        // Après l'animation, on navigue vers la nouvelle page
+        // NAVIGATE TO ROUTE
         navigate('/content');
       }
     });
   };
 
-  // Callback passée à InteractiveViewIntro pour lancer la transition
+  // CALLBACK AT InteractiveViewIntro TO STOP INTRO
   const handleStartIntro = () => {
     setIntro(false);
   };
 
-  // Dès que intro passe à false, on lance la timeline GSAP de transition
+  {/* --------------------------------------- ANIMATION --------------------------------------- */ }
+  {/* --------------------------------------- ANIMATION --------------------------------------- */ }
+  {/* --------------------------------------- ANIMATION --------------------------------------- */ }
   useEffect(() => {
     if (!intro) {
       const tl = gsap.timeline();
@@ -75,21 +77,46 @@ function InteractiveView360() {
             introContentRef.current.style.display = "none";
           }
           if (circleYellowRef.current) {
+            circleYellowRef.current.classList.remove("intro");
             circleYellowRef.current.style.display = "flex";
           }
         }
       },
         "<"
       );
-       // 3) CIRCLES ANIMATION
+      // 3) CIRCLES ANIMATION
       tl.to(circleWhiteRef.current, {
         duration: 0.5,
         opacity: 1,
         ease: "power3.out",
-      },  "<"
+      }, "<"
+      );
+      tl.fromTo(
+        circleYellowRef.current,
+        { opacity: 0 },
+        { duration: 0.2, opacity: 1, ease: "power3.out" },
+        ">0.3"
       );
     }
   }, [intro]);
+
+  // WHITE OVERLAY ANIMATION
+  useEffect(() => {
+    const tlPage = gsap.timeline();
+    tlPage.fromTo(overlayRef.current,
+      { opacity: 1 },
+      {
+        duration: 2,
+        opacity: 0,
+        ease: "power3.out"
+      },
+      ">0.2"
+    );
+  }, []);
+
+  {/* --------------------------------------- CONTENT --------------------------------------- */ }
+  {/* --------------------------------------- CONTENT --------------------------------------- */ }
+  {/* --------------------------------------- CONTENT --------------------------------------- */ }
 
   return (
     <>
@@ -104,7 +131,7 @@ function InteractiveView360() {
         {/* -------- WHITE CIRCLE -------- */}
         <ClickableCircle
           circleWhiteRef={circleWhiteRef}
-          position={[0, 0, -20]}
+          position={[30, 0, -15]}
           isDragging={isDragging}
           onClick={handleWhiteCircleClick}
         />
@@ -113,7 +140,7 @@ function InteractiveView360() {
       {/* -------- YELLOW CIRCLE -------- */}
       <div className='overlay-circle-shape'>
         <div
-          className={`overlay-circle ${isDragging ? "dragging" : ""}`}
+          className={`overlay-circle intro ${isDragging ? "dragging" : ""}`}
           ref={circleYellowRef}
           onClick={handleTextureChange}
         >

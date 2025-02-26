@@ -11,7 +11,7 @@ interface ClickableCircleProps {
 function ClickableCircle({ position, isDragging, onClick, circleWhiteRef }: ClickableCircleProps) {
 
     return (
-        <Html position={position} center transform distanceFactor={10}>
+        <Html position={position} center transform sprite>
           <div
              onClick={onClick}
              ref={circleWhiteRef}

@@ -5,6 +5,7 @@ Canvas {
 
 .overlay-circle-shape {
     position: absolute;
+    z-index: 3;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -23,8 +24,7 @@ Canvas {
     padding: 1rem;
     border: .15rem solid #ffd260;
     background-clip: content-box;
-    z-index: 1;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
@@ -42,11 +42,20 @@ Canvas {
         width: 8.4rem;
         border: .2rem solid #ffd260;
     }
-
+    &:active {
+        background-color: #ffc760;
+        padding: 1rem;
+        width: 8rem;
+        border: .15rem solid #ffc760;
+    }
+    
     &.dragging {
         transition: .5s ease-in-out;
-        opacity: 0;
+        opacity: .5;
         padding: .7rem;
         width: 7rem;
+    }
+    &.intro {
+        display: none;
     }
 }
